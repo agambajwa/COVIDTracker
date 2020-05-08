@@ -10,7 +10,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="535dp"
-        android:layout_above="@+id/btnCountryDetails"
+        android:id="@+id/scMain"
+        android:layout_above="@+id/buttonPanel"
         android:layout_alignParentTop="true"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="-6dp">
@@ -471,20 +472,49 @@
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/btnCountryDetails"
+    <LinearLayout
         android:layout_width="match_parent"
+        android:id="@+id/buttonPanel"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
         android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
         android:layout_marginTop="20dp"
+        android:layout_marginRight="25dp"
         android:layout_marginBottom="5dp"
-        android:background="@color/color_one"
-        android:text="Country Details"
-        android:textColor="#ffff"
-        android:textSize="16sp"
-        android:padding="5dp"
-        android:onClick="countryDetails"/>
+        android:weightSum="6">
+
+        <Button
+            android:id="@+id/btnCountryDetails"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_rounded_one"
+            android:onClick="countryDetails"
+            android:padding="5dp"
+            android:layout_marginRight="2dp"
+            android:text="Country Details"
+            android:textColor="#ffff"
+            android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button_rounded_two"
+            android:clickable="true"
+            android:onClick="aboutActivity"
+            android:layout_marginLeft="2dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_info_outline_white_24dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
 
 </RelativeLayout>
