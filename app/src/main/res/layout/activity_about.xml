@@ -24,6 +24,8 @@
         android:layout_margin="15dp">
 
         <LinearLayout
+            android:id="@+id/llLastUpdated"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -32,10 +34,12 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_cloud_download_white_24dp"/>
             <TextView
+                android:id="@+id/tvLastUpdated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Last Updated: Mon, 06 May 2020 1:20:30PM"
                 android:textColor="#FFFFFF"
+                android:layout_gravity="center"
                 android:textSize="16sp"
                 android:layout_marginLeft="10dp"/>
 
@@ -58,7 +62,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="Agampreet Singh Bajwa"
                 android:textColor="#FFFFFF"
-                android:textSize="30sp" />
+                android:textSize="35sp" />
 
         </LinearLayout>
 
@@ -109,7 +113,10 @@
                 android:layout_marginRight="2.5dp"
                 android:src="@drawable/ic_github"
                 android:clickable="true"
-                android:focusable="true" />
+                android:tag="https://github.com/agambajwa"
+                android:focusable="true"
+                android:onClick="openBrowser"/>
+
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
@@ -117,15 +124,20 @@
                 android:layout_marginRight="2.5dp"
                 android:src="@drawable/ic_twitter_social_icon_circle_color"
                 android:clickable="true"
-                android:focusable="true" />
+                android:tag="https://twitter.com/agam_bajwa"
+                android:focusable="true"
+                android:onClick="openBrowser"/>
+
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginLeft="2.5dp"
                 android:layout_marginRight="2.5dp"
                 android:src="@drawable/ic_linkedin"
+                android:tag="https://www.linkedin.com/in/agampreet-singh-bajwa-197871148/"
                 android:clickable="true"
-                android:focusable="true" />
+                android:focusable="true"
+                android:onClick="openBrowser"/>
 
         </LinearLayout>
 
