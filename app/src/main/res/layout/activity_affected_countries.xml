@@ -18,6 +18,7 @@
         android:backgroundTint="#C1C1C1"
         android:drawableLeft="@drawable/ic_search_white_24dp"
         android:drawablePadding="5dp"
+        android:textColor="@color/color_white"
         android:hint="Search country"
         android:maxLines="1"
         android:paddingLeft="10dp"

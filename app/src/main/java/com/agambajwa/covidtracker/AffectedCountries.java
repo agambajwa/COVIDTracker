@@ -115,11 +115,12 @@ public class AffectedCountries extends AppCompatActivity {
                         String recovered = jsonObject.getString("recovered");
                         String active = jsonObject.getString("active");
                         String critical = jsonObject.getString("critical");
+                        String tests = jsonObject.getString("tests");
 
                         JSONObject object = jsonObject.getJSONObject("countryInfo");
                         String countryFlagUrl = object.getString("flag");
 
-                        countryModel = new CountryModel(countryFlagUrl, countryName, cases, casesToday, deaths, deathsToday, recovered, active, critical);
+                        countryModel = new CountryModel(countryFlagUrl, countryName, cases, casesToday, deaths, deathsToday, recovered, active, critical, tests);
                         countryModelList.add(countryModel);
                     }
                     customAdapter = new CustomAdapter(AffectedCountries.this, countryModelList);

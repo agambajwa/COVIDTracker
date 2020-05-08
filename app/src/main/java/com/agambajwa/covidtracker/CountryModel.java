@@ -1,12 +1,12 @@
 package com.agambajwa.covidtracker;
 
 public class CountryModel {
-    private String countryFlag, countryName, cases, casesToday, deaths, deathsToday, recovered, active, critical;
+    private String countryFlag, countryName, cases, casesToday, deaths, deathsToday, recovered, active, critical, tests;
 
     public CountryModel() {
     }
 
-    public CountryModel(String countryFlag, String countryName, String cases, String casesToday, String deaths, String deathsToday, String recovered, String active, String critical) {
+    public CountryModel(String countryFlag, String countryName, String cases, String casesToday, String deaths, String deathsToday, String recovered, String active, String critical, String tests) {
         this.countryFlag = countryFlag;
         this.countryName = countryName;
         this.cases = cases;
@@ -16,6 +16,15 @@ public class CountryModel {
         this.recovered = recovered;
         this.active = active;
         this.critical = critical;
+        this.tests = tests;
+    }
+
+    public String getTests() {
+        return tests;
+    }
+
+    public void setTests(String tests) {
+        this.tests = tests;
     }
 
     public String getCountryFlag() {

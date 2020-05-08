@@ -1,7 +1,5 @@
 package com.agambajwa.covidtracker;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +7,8 @@ import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,8 +18,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.leo.simplearcloader.SimpleArcLoader;
 
-import org.eazegraph.lib.charts.PieChart;
-import org.eazegraph.lib.models.PieModel;
+import org.eazegraph.lib.charts.BarChart;
+import org.eazegraph.lib.models.BarModel;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,12 +28,14 @@ public class MainActivity extends AppCompatActivity {
     TextView tvCases, tvRecovered, tvCritical, tvActive, tvCasesToday, tvDeaths, tvDeathsToday, tvAffectedCountries;
     SimpleArcLoader simpleArcLoader;
     ScrollView scrollView;
-    PieChart pieChart;
+    BarChart barChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getSupportActionBar().setTitle("COVID-19 Tracker");
 
         tvCases = findViewById(R.id.tvCases);
         tvRecovered = findViewById(R.id.tvRecovered);
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         simpleArcLoader = findViewById(R.id.loader);
         scrollView = findViewById(R.id.svGlobalStats);
-        pieChart = findViewById(R.id.pieChart);
+        barChart = findViewById(R.id.barChart);
 
         fetchData();
 
@@ -73,11 +75,12 @@ public class MainActivity extends AppCompatActivity {
                     tvDeathsToday.setText(jsonObject.getString("todayDeaths"));
                     tvAffectedCountries.setText(jsonObject.getString("affectedCountries"));
 
-                    pieChart.addPieSlice(new PieModel("Cases", Integer.parseInt(tvCases.getText().toString()), Color.parseColor("#FFA726")));
-                    pieChart.addPieSlice(new PieModel("Recovered", Integer.parseInt(tvRecovered.getText().toString()), Color.parseColor("#66BB6A")));
-                    pieChart.addPieSlice(new PieModel("Deaths", Integer.parseInt(tvDeaths.getText().toString()), Color.parseColor("#EF5350")));
-                    pieChart.addPieSlice(new PieModel("Active", Integer.parseInt(tvActive.getText().toString()), Color.parseColor("#29B6F6")));
-                    pieChart.startAnimation();
+                    barChart.addBar(new BarModel(Float.parseFloat(tvCases.getText().toString()), Color.parseColor("#FFA726")));
+                    barChart.addBar(new BarModel(Float.parseFloat(tvDeaths.getText().toString()), Color.parseColor("#EF5350")));
+                    barChart.addBar(new BarModel(Float.parseFloat(tvRecovered.getText().toString()),  Color.parseColor("#66BB6A")));
+                    barChart.addBar(new BarModel(Float.parseFloat(tvActive.getText().toString()), Color.parseColor("#29B6F6")));
+                    barChart.addBar(new BarModel(Float.parseFloat(tvCritical.getText().toString()), Color.parseColor("#FFEB3B")));
+                    barChart.startAnimation();
 
                     simpleArcLoader.stop();
                     simpleArcLoader.setVisibility(View.GONE);
