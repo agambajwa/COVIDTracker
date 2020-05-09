@@ -14,5 +14,3 @@ An Android App to track cases of COVID-19
 
 **Agampreet Singh Bajwa** - [agambajwa](https://github.com/agambajwa)
 
-### Note 
-Will update the UI.
